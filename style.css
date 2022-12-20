@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+body {
+  font-size: 18px;
+  height: 100vh;
+  /* display: grid;
+  place-content: center; */
+  background: #152938;
+}
+
+/* ! Container tela inicial ------------------------------- */
+#container_tela_inicial {
+  width: 327px;
+  height: 386px;
+  background: #fcfcfc;
+  border-radius: 10px;
+  margin: 165px auto 0 auto;
+}
