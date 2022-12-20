@@ -22,4 +22,127 @@ body {
   background: #fcfcfc;
   border-radius: 10px;
   margin: 165px auto 0 auto;
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+h1 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: -45px;
+  left: 50%;
+  color: #fcfcfc;
+}
+
+#container_tela_inicial h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #7191a5;
+  font-style: normal;
+  margin-bottom: 11px;
+}
+
+/* Container tema  */
+
+#container_opcoes_temas {
+  display: flex;
+  column-gap: 11px;
+}
+
+.opcao_tema {
+  width: 134px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border-radius: 26px;
+  padding: 10px 45.5px;
+  background: #bcced9;
+  color: #fcfcfc;
+  font-weight: 700;
+}
+
+.opcao_tema.selecionado {
+  background: #304859;
+}
+
+.opcao_tema:hover {
+  cursor: pointer;
+  background: #6395b8;
+}
+
+/* Container número de jogadores */
+
+#container_numeroJogadores_opcoes {
+  display: flex;
+  column-gap: 10px;
+}
+
+.opcao_numero_jogadores {
+  width: 62px;
+  height: 40px;
+  background: #bcced9;
+  border-radius: 26px;
+  display: grid;
+  place-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fcfcfc;
+}
+
+.opcao_numero_jogadores:hover {
+  cursor: pointer;
+  background: #6395b8;
+}
+
+.opcao_numero_jogadores.selecionado {
+  background: #304859;
+}
+
+/* Container tamanho do grid */
+
+#container_opcao_tamanho {
+  display: flex;
+  column-gap: 11px;
+}
+
+.opcao_tamanho {
+  width: 134px;
+  height: 40px;
+  background: #bcced9;
+  border-radius: 26px;
+  display: grid;
+  place-content: center;
+  font-weight: 700;
+  color: #fcfcfc;
+}
+
+.opcao_tamanho:hover {
+  cursor: pointer;
+  background: #6395b8;
+}
+
+.opcao_tamanho.ativo {
+  background: #304859;
+}
+
+/* Botao começar jogo */
+
+#botao_comecar {
+  width: 279px;
+  height: 48px;
+  border-radius: 26px;
+  background: #fda214;
+  border: none;
+  color: #fcfcfc;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+#botao_comecar:hover {
+  background: #ffb84a;
 }
