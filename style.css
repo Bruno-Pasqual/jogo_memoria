@@ -69,3 +69,15 @@ button {
   display: grid;
   place-content: center;
 }
+
+.box_bolas.selecionado {
+  background: #fda214;
+}
+
+.box_bolas.correto {
+  background: green;
+}
+
+.box_bolas.errado {
+  background: red;
+}
