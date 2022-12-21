@@ -124,7 +124,7 @@ h1 {
   background: #6395b8;
 }
 
-.opcao_tamanho.ativo {
+.opcao_tamanho.selecionado {
   background: #304859;
 }
 
@@ -146,3 +146,5 @@ h1 {
 #botao_comecar:hover {
   background: #ffb84a;
 }
+
+/* asdasdasda */

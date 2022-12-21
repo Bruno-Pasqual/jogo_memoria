@@ -6,6 +6,19 @@ const inputQuantidadeJogadores = document.querySelectorAll(
   '.opcao_numero_jogadores'
 );
 const inputOpcoesTamanho = document.querySelectorAll('.opcao_tamanho');
+const botaoComecar = document.getElementById('botao_comecar');
+
+//! Variáveis necessárias ----------------------------------------------------
+
+let arrNumeros = [];
+let arrIcones = [
+  './img/ball.svg',
+  './img/bug.svg',
+  './img/frasco.svg',
+  './img/neve.svg',
+  './img/carro.svg',
+];
+let opcaoTema = [arrNumeros, arrIcones];
 
 //! Funções -------------------------------------------------------------------
 
@@ -33,4 +46,19 @@ inputQuantidadeJogadores.forEach((e) => {
     });
     e.classList.add('selecionado');
   });
+});
+
+//Selecionando o tamanho do grid para o jogo -----
+
+inputOpcoesTamanho.forEach((e) => {
+  e.addEventListener('click', () => {
+    inputOpcoesTamanho.forEach((elemento) => {
+      elemento.classList.remove('selecionado');
+    });
+    e.classList.add('selecionado');
+  });
+});
+
+botaoComecar.addEventListener('click', () => {
+  console.log('eai vacilao');
 });
