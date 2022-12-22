@@ -242,6 +242,10 @@ footer {
   background: #fda214;
 }
 
+.container_circulos.errado {
+  background: red;
+}
+
 .container_circulos::after {
   content: '';
   width: 100%;
@@ -249,10 +253,14 @@ footer {
   background: #304859;
   position: absolute;
   border-radius: 59px;
-  opacity: 0.1;
+  opacity: 1;
 }
 
 .container_circulos.selecionado:after {
+  opacity: 0;
+}
+
+.container_circulos.correto:after {
   opacity: 0;
 }
 
