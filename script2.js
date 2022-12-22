@@ -4,7 +4,7 @@ const containerCirculos = document.getElementById('container_circulos');
 
 //! Variáveis para uso ------------------------------------------------------
 
-let quantosCirculos = 36;
+let quantosCirculos = 6;
 let pares = quantosCirculos / 2;
 let arr = [];
 let jogadorAtivo = 0;
@@ -98,6 +98,7 @@ function checarPontuacao(pontuacaoJogadores) {
       Number(elemento.innerHTML) > pontuacao ? (vencedor = index) : '';
     });
     console.log(`O vencedor foi o jogador ${[vencedor]}`);
+    mostraResultado();
   }
 }
 
@@ -132,3 +133,13 @@ circulos.forEach((elemento) => {
 });
 
 //! Criando lógica para troca dos jogadores -----------------------------------
+function mostraResultado() {
+  //Seleção  dos elementos
+  let tampaTela = document.getElementById('tampa_tela');
+  let modalFim = document.getElementById('modal_fim_de_jogo');
+  let botaoRecomecar = document.querySelector('.botao_recomecar');
+  let botaoConfigurarJogo = document.querySelector('.botao_configurar_jogo');
+
+  tampaTela.style.display = 'block';
+  modalFim.style.display = 'block';
+}

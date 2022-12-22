@@ -283,6 +283,7 @@ footer {
   border-radius: 10px;
   background-color: #f2f2f2;
   z-index: 2;
+  display: none;
 }
 
 #tampa_tela {
@@ -293,6 +294,7 @@ footer {
   top: 0;
   left: 0;
   z-index: 1;
+  display: none;
 }
 
 /* Container Com o texto do cabeçalho  */
