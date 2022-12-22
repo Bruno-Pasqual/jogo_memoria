@@ -197,6 +197,7 @@ footer {
   position: relative;
 }
 
+/* todo Editando o Jogador ----------------------------- */
 .box_jogador {
   height: 70px;
   width: 64px;
@@ -206,6 +207,11 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+}
+
+.box_jogador.ativo {
+  background: #fda214;
+  color: #fcfcfc;
 }
 
 .jogador_titulo {

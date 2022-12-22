@@ -4,9 +4,10 @@ const containerCirculos = document.getElementById('container_circulos');
 
 //! Variáveis para uso ------------------------------------------------------
 
-let quantosCirculos = 36;
+let quantosCirculos = 16;
 let pares = quantosCirculos / 2;
 let arr = [];
+let jogadorAtivo = 0;
 
 //! Funções -----------------------------------------------------------------
 
@@ -48,6 +49,7 @@ function comparaSelecionados(arrSelecionados) {
     //Removendo classe de selecionado das divs
     arrSelecionados[0].classList.remove('selecionado');
     arrSelecionados[1].classList.remove('selecionado');
+    aumentaPonttuacao();
   } else {
     arrSelecionados[0].classList.add('errado');
     arrSelecionados[1].classList.add('errado');
@@ -57,7 +59,20 @@ function comparaSelecionados(arrSelecionados) {
       arrSelecionados[0].classList.remove('selecionado');
       arrSelecionados[1].classList.remove('selecionado');
     }, 1000);
+    trocaJogador();
   }
+}
+
+function trocaJogador() {
+  //todo Função que faz o controle para a troca dos jogadores utilizando a variável 'jogadorAtivo'
+
+  let jogadores = document.querySelectorAll('.box_jogador');
+  jogadores.forEach((e) => {
+    e.classList.remove('ativo');
+  });
+  jogadorAtivo++;
+  jogadorAtivo === 4 ? (jogadorAtivo = 0) : '';
+  jogadores[jogadorAtivo].classList.add('ativo');
 }
 
 //! Event handlers ----------------------------------------------------------
@@ -89,3 +104,12 @@ circulos.forEach((elemento) => {
     arrSelecionados.length === 2 ? comparaSelecionados(arrSelecionados) : '';
   });
 });
+
+//! Criando lógica para troca dos jogadores -----------------------------------
+function aumentaPonttuacao() {
+  let pontuacaoJogadores = document.querySelectorAll('.numero_pontos');
+  temp = Number(pontuacaoJogadores[jogadorAtivo].innerHTML);
+  console.log(typeof temp, temp);
+  temp++;
+  pontuacaoJogadores[jogadorAtivo].innerHTML = temp;
+}
