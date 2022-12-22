@@ -1,14 +1,18 @@
+import { arrayteste } from './script.js';
+
 //!Selecionando os elementos no DOM ---------------------------------------
 
 const containerCirculos = document.getElementById('container_circulos');
 
 //! Variáveis para uso ------------------------------------------------------
 
-let quantosCirculos = 6;
+// let quantosCirculos = arrayteste[0];
+let quantosCirculos = 36;
 let pares = quantosCirculos / 2;
 let arr = [];
 let jogadorAtivo = 0;
-
+let temp, pontuacao;
+let vencedor;
 //! Funções -----------------------------------------------------------------
 
 function alteraCirculo() {
@@ -93,7 +97,7 @@ function checarPontuacao(pontuacaoJogadores) {
   });
   if (acumulador === pares) {
     pontuacao = 0;
-    vencendor = 0;
+    vencedor = 0;
     pontuacaoJogadores.forEach((elemento, index) => {
       Number(elemento.innerHTML) > pontuacao ? (vencedor = index) : '';
     });
