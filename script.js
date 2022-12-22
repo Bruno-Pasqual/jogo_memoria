@@ -17,6 +17,7 @@ let arrIcones = [
   './img/frasco.svg',
   './img/neve.svg',
   './img/carro.svg',
+  './img/ancora.svg',
 ];
 let opcaoTema = [arrNumeros, arrIcones];
 
