@@ -7,6 +7,7 @@ const inputQuantidadeJogadores = document.querySelectorAll(
 );
 const inputOpcoesTamanho = document.querySelectorAll('.opcao_tamanho');
 const botaoComecar = document.getElementById('botao_comecar');
+const containerCirculos = document.getElementById('container_circulo');
 
 //! Variáveis necessárias ----------------------------------------------------
 
@@ -19,7 +20,9 @@ let arrIcones = [
   './img/carro.svg',
   './img/ancora.svg',
 ];
+
 let opcaoTema = [arrNumeros, arrIcones];
+let referencia = 16;
 
 //! Funções -------------------------------------------------------------------
 
@@ -63,3 +66,5 @@ inputOpcoesTamanho.forEach((e) => {
 botaoComecar.addEventListener('click', () => {
   console.log('eai vacilao');
 });
+
+//todo Alterando a HTML -----------------------------------------------

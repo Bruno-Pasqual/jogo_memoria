@@ -161,7 +161,6 @@ h1 {
 header {
   width: 327px;
   height: 40px;
-  border: 1px solid black;
   margin: 0 auto 80px auto;
   display: flex;
   justify-content: space-between;
@@ -169,16 +168,18 @@ header {
 }
 
 main {
-  border: 1px solid black;
   width: 327px;
   height: 327px;
   margin: 0 auto 94px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer {
   width: 327px;
   height: 78px;
-  border: 1px solid black;
   margin: 0 auto 0 auto;
   display: flex;
   justify-content: space-between;
@@ -204,6 +205,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
 }
 
 .jogador_titulo {
@@ -218,7 +220,12 @@ footer {
   color: #304859;
 }
 
-/* Editando os circulos  */
+#container_circulos {
+  background: bisque;
+}
+
+/* todo Editando os circulos -------------------------------------- */
+
 .container_circulos {
   width: 72.53px;
   height: 72.53px;
@@ -228,4 +235,27 @@ footer {
   color: #fcfcfc;
   font-size: 40px;
   background: #bcced9;
+  position: relative;
+}
+
+.container_circulos.selecionado {
+  background: #fda214;
+}
+
+.container_circulos::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #304859;
+  position: absolute;
+  border-radius: 59px;
+  opacity: 0.1;
+}
+
+.container_circulos.selecionado:after {
+  opacity: 0;
+}
+
+.container_circulos:hover {
+  cursor: pointer;
 }
