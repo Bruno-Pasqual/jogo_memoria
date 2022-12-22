@@ -156,6 +156,7 @@ h1 {
   height: 100%;
   background: #fcfcfc;
   padding: 24px;
+  position: relative;
 }
 
 header {
@@ -226,10 +227,6 @@ footer {
   color: #304859;
 }
 
-#container_circulos {
-  background: bisque;
-}
-
 /* todo Editando os circulos -------------------------------------- */
 
 .container_circulos {
@@ -272,4 +269,114 @@ footer {
 
 .container_circulos:hover {
   cursor: pointer;
+}
+
+/* ! Modal main ---------------------------------------------- */
+#modal_fim_de_jogo {
+  height: 488px;
+  width: 327px;
+  padding: 32px 24px 24px 24px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 334px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  z-index: 2;
+}
+
+#tampa_tela {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.745);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Container Com o texto do cabeçalho  */
+#modal_header {
+  text-align: center;
+  margin: 0 auto 24px auto;
+}
+
+#quem_ganhou {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 9px;
+  color: #152938;
+}
+
+#mensagem_resultado {
+  color: #7191a5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#modal_main {
+  display: grid;
+  row-gap: 8px;
+}
+
+/* Container com os placares  */
+.container_vencedor {
+  width: 279px;
+  height: 48px;
+  background: #dfe7ec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-radius: 5px;
+}
+
+.jogador_vencedor {
+  color: red;
+  font-size: 13px;
+  font-weight: 700;
+  color: #7191a5;
+}
+
+.quantos_marcou {
+  color: #304859;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Container com os botões */
+#modal_footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+#modal_footer button {
+  width: 279px;
+  height: 48px;
+  border-radius: 26px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+}
+
+.botao_recomecar {
+  background: #fda214;
+  color: #fcfcfc;
+  margin-bottom: 16px;
+}
+
+.botao_recomecar:hover {
+  background: #ffb84a;
+  cursor: pointer;
+}
+
+.botao_configurar_jogo {
+  background: #dfe7ec;
+  color: #304859;
+}
+
+.botao_configurar_jogo:hover {
+  cursor: pointer;
+  background: #c6cacd;
 }

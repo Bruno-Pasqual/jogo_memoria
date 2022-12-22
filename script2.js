@@ -4,7 +4,7 @@ const containerCirculos = document.getElementById('container_circulos');
 
 //! Variáveis para uso ------------------------------------------------------
 
-let quantosCirculos = 16;
+let quantosCirculos = 36;
 let pares = quantosCirculos / 2;
 let arr = [];
 let jogadorAtivo = 0;
@@ -75,6 +75,32 @@ function trocaJogador() {
   jogadores[jogadorAtivo].classList.add('ativo');
 }
 
+function aumentaPonttuacao() {
+  //todo Função que irá aumentar a pontuação caso o jogador acerte na escolha e irá ficar fazendo a verificação 'checarPontuação' que irá encerrar o jogo quando o a pontuação dos jogadores se igualar a quantidade de pares de números.
+  let pontuacaoJogadores = document.querySelectorAll('.numero_pontos');
+  temp = Number(pontuacaoJogadores[jogadorAtivo].innerHTML);
+  console.log(typeof temp, temp);
+  temp++;
+  pontuacaoJogadores[jogadorAtivo].innerHTML = temp;
+  checarPontuacao(pontuacaoJogadores);
+}
+
+function checarPontuacao(pontuacaoJogadores) {
+  //todo Função que faz a verificação entre o número de pares e a pontuação dos jogadores, para encerrar o jogo caso ambos sejam iguais.
+  let acumulador = 0;
+  pontuacaoJogadores.forEach((elemento) => {
+    acumulador += Number(elemento.innerHTML);
+  });
+  if (acumulador === pares) {
+    pontuacao = 0;
+    vencendor = 0;
+    pontuacaoJogadores.forEach((elemento, index) => {
+      Number(elemento.innerHTML) > pontuacao ? (vencedor = index) : '';
+    });
+    console.log(`O vencedor foi o jogador ${[vencedor]}`);
+  }
+}
+
 //! Event handlers ----------------------------------------------------------
 
 //todo Criando lógica que irá criar os círculos de acordo com o tamanho do grid escolhido pelo jogador e já irá atribuir os números aleatórios a essas divs.
@@ -106,10 +132,3 @@ circulos.forEach((elemento) => {
 });
 
 //! Criando lógica para troca dos jogadores -----------------------------------
-function aumentaPonttuacao() {
-  let pontuacaoJogadores = document.querySelectorAll('.numero_pontos');
-  temp = Number(pontuacaoJogadores[jogadorAtivo].innerHTML);
-  console.log(typeof temp, temp);
-  temp++;
-  pontuacaoJogadores[jogadorAtivo].innerHTML = temp;
-}
