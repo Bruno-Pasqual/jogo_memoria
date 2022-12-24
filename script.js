@@ -1,4 +1,4 @@
-export let arrayteste = [];
+import { scriptPagina2 } from './script2.js';
 
 //!Checando se o html que está atualmente sendo mostrado é do pagina 1 e executando código caso seja
 
@@ -14,7 +14,8 @@ function scriptPagina1() {
   );
   const inputOpcoesTamanho = document.querySelectorAll('.opcao_tamanho');
   const botaoComecar = document.getElementById('botao_comecar');
-  const containerCirculos = document.getElementById('container_circulo');
+
+  //Container que irá ser alterado
 
   //! Variáveis necessárias ----------------------------------------------------
 
@@ -77,6 +78,7 @@ function scriptPagina1() {
   });
 
   botaoComecar.addEventListener('click', () => {
+    scriptPagina2();
     console.log(arrEscolhas);
   });
 
