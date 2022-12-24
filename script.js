@@ -1,8 +1,11 @@
-export let arrayteste = [];
+import { executaScript2 } from './script2.js';
+// export let arrayteste = [];
 
 //!Checando se o html que está atualmente sendo mostrado é do pagina 1 e executando código caso seja
 
-window.location.pathname.endsWith('index.html') ? scriptPagina1() : '';
+window.location.pathname.endsWith('index.html')
+  ? scriptPagina1()
+  : executaScript2();
 
 function scriptPagina1() {
   //!Selecionando elementos necessários para o DOM ------------------------------
@@ -15,6 +18,8 @@ function scriptPagina1() {
   const inputOpcoesTamanho = document.querySelectorAll('.opcao_tamanho');
   const botaoComecar = document.getElementById('botao_comecar');
   const containerCirculos = document.getElementById('container_circulo');
+  const mainContainer = document.getElementById('main_container');
+  console.log(mainContainer);
 
   //! Variáveis necessárias ----------------------------------------------------
 
@@ -34,7 +39,7 @@ function scriptPagina1() {
   //! Variáveis de teste --------------------- <<<
 
   let tema, numeroJogadores, tamanhoGrid;
-  let arrEscolhas = [tema, numeroJogadores, tamanhoGrid];
+  let arrEscolhas = [5, 5, 5];
 
   //! Funções -------------------------------------------------------------------
 
@@ -77,7 +82,7 @@ function scriptPagina1() {
   });
 
   botaoComecar.addEventListener('click', () => {
-    console.log(arrEscolhas);
+    executaScript2(...arrEscolhas);
   });
 
   //todo Alterando a HTML -----------------------------------------------
