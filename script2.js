@@ -1,4 +1,4 @@
-export function scriptPagina2() {
+export function scriptPagina2(quantosCirculos) {
   //!Selecionando os elementos no DOM ---------------------------------------
 
   const containerDefinidor = document.getElementById('container_definidor');
@@ -66,7 +66,7 @@ export function scriptPagina2() {
   //! Variáveis para uso ------------------------------------------------------
 
   // let quantosCirculos = arrayteste[0];
-  let quantosCirculos = 36;
+  quantosCirculos = 36;
   let pares = quantosCirculos / 2;
   let arr = [];
   let jogadorAtivo = 0;
