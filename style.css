@@ -161,7 +161,7 @@ h1 {
 
 /* todo Estilizações iniciais ----  */
 
-.main_page2 {
+.main_page1 {
   width: 100%;
   height: 100%;
   background: #fcfcfc;
@@ -177,7 +177,7 @@ header {
   align-items: center;
 }
 
-.main_page1 {
+.main_page2 {
   width: 327px;
   height: 327px;
   margin: 0 auto 94px auto;

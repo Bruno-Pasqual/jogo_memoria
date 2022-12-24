@@ -1,15 +1,69 @@
 export function executaScript2(num1, num2, num3) {
-  window.location.pathname.endsWith('p_jogo.html')
-    ? ''
-    : window.location.replace('p_jogo.html');
-
   console.log(num1, num2, num3);
   // import { arrayteste } from './script.js';
 
   //!Selecionando os elementos no DOM ---------------------------------------
+  const mainContainer = document.getElementById('main_container');
+  mainContainer.innerHTML = ` <div id="tampa_tela"></div>
+  <header>
+    <h3>memória</h3>
+    <div id="lado_esquerdo">
+      <button id="botao_menu">Menu</button>
+    </div>
+  </header>
+  <main id="container_circulos"></main>
+  <footer>
+    <div class="box_jogador ativo">
+      <p class="jogador_titulo">P1</p>
+      <p class="numero_pontos">0</p>
+    </div>
+    <div class="box_jogador">
+      <p class="jogador_titulo">P2</p>
+      <p class="numero_pontos">0</p>
+    </div>
+    <div class="box_jogador">
+      <p class="jogador_titulo">P3</p>
+      <p class="numero_pontos">0</p>
+    </div>
+    <div class="box_jogador">
+      <p class="jogador_titulo">P4</p>
+      <p class="numero_pontos">0</p>
+    </div>
+  </footer>
 
+  <!-- !Modais ------ -->
+
+  <div id="modal_fim_de_jogo">
+    <div id="modal_header">
+      <p id="quem_ganhou">Jogador 3 ganhou!</p>
+      <p id="mensagem_resultado">Fim de jogo! Confira o resultado</p>
+    </div>
+    <div id="modal_main">
+      <div class="container_vencedor">
+        <p class="jogador_vencedor">Jogador 3</p>
+        <p class="quantos_marcou">8 pares</p>
+      </div>
+      <div class="container_vencedor">
+        <p class="jogador_vencedor">Jogador 3</p>
+        <p class="quantos_marcou">8 pares</p>
+      </div>
+      <div class="container_vencedor">
+        <p class="jogador_vencedor">Jogador 3</p>
+        <p class="quantos_marcou">8 pares</p>
+      </div>
+      <div class="container_vencedor">
+        <p class="jogador_vencedor">Jogador 3</p>
+        <p class="quantos_marcou">8 pares</p>
+      </div>
+    </div>
+    <div id="modal_footer">
+      <button class="botao_recomecar">Recomeçar</button>
+      <button class="botao_configurar_jogo">Configurar Novo Jogo</button>
+    </div>
+  </div>`;
+  mainContainer.classList.remove('main_page1');
+  mainContainer.classList.add('main_page2');
   const containerCirculos = document.getElementById('container_circulos');
-
   //! Variáveis para uso ------------------------------------------------------
 
   // let quantosCirculos = arrayteste[0];
