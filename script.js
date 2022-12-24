@@ -1,5 +1,3 @@
-export let arrayteste = [];
-
 //!Checando se o html que está atualmente sendo mostrado é do pagina 1 e executando código caso seja
 
 window.location.pathname.endsWith('index.html') ? scriptPagina1() : '';
@@ -27,14 +25,13 @@ function scriptPagina1() {
     './img/carro.svg',
     './img/ancora.svg',
   ];
-
   let opcaoTema = [arrNumeros, arrIcones];
   let referencia = 16;
 
-  //! Variáveis de teste --------------------- <<<
+  //! Variáveis de teste --------------------- <<<<< >>>>>
 
-  let tema, numeroJogadores, tamanhoGrid;
-  let arrEscolhas = [tema, numeroJogadores, tamanhoGrid];
+  // let tema, numeroJogadores, tamanhoGrid;
+  let arrEscolhas = [];
 
   //! Funções -------------------------------------------------------------------
 
@@ -49,8 +46,9 @@ function scriptPagina1() {
       inputOpcoesTema.forEach((e) => {
         e.classList.remove('selecionado');
       });
+
       e.classList.add('selecionado');
-      tema = e.innerHTML;
+      arrEscolhas[0] = e.innerHTML;
     });
   });
 
@@ -62,6 +60,7 @@ function scriptPagina1() {
         elemento.classList.remove('selecionado');
       });
       e.classList.add('selecionado');
+      arrEscolhas[1] = Number(e.innerHTML);
     });
   });
 
@@ -73,6 +72,7 @@ function scriptPagina1() {
         elemento.classList.remove('selecionado');
       });
       e.classList.add('selecionado');
+      e.innerHTML === '4x4' ? (arrEscolhas[2] = 16) : (arrEscolhas[2] = 36);
     });
   });
 
