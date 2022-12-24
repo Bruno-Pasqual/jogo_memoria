@@ -1,70 +1,84 @@
-//!Selecionando elementos necessários para o DOM ------------------------------
-//todo Tela inicial !
+export let arrayteste = [];
 
-const inputOpcoesTema = document.querySelectorAll('.opcao_tema');
-const inputQuantidadeJogadores = document.querySelectorAll(
-  '.opcao_numero_jogadores'
-);
-const inputOpcoesTamanho = document.querySelectorAll('.opcao_tamanho');
-const botaoComecar = document.getElementById('botao_comecar');
-const containerCirculos = document.getElementById('container_circulo');
+//!Checando se o html que está atualmente sendo mostrado é do pagina 1 e executando código caso seja
 
-//! Variáveis necessárias ----------------------------------------------------
+window.location.pathname.endsWith('index.html') ? scriptPagina1() : '';
 
-let arrNumeros = [];
-let arrIcones = [
-  './img/ball.svg',
-  './img/bug.svg',
-  './img/frasco.svg',
-  './img/neve.svg',
-  './img/carro.svg',
-  './img/ancora.svg',
-];
+function scriptPagina1() {
+  //!Selecionando elementos necessários para o DOM ------------------------------
+  //todo Tela inicial !
 
-let opcaoTema = [arrNumeros, arrIcones];
-let referencia = 16;
+  const inputOpcoesTema = document.querySelectorAll('.opcao_tema');
+  const inputQuantidadeJogadores = document.querySelectorAll(
+    '.opcao_numero_jogadores'
+  );
+  const inputOpcoesTamanho = document.querySelectorAll('.opcao_tamanho');
+  const botaoComecar = document.getElementById('botao_comecar');
+  const containerCirculos = document.getElementById('container_circulo');
 
-//! Funções -------------------------------------------------------------------
+  //! Variáveis necessárias ----------------------------------------------------
 
-//FUnção que irá remover a classe de todos os elementos dentro do array
+  let arrNumeros = [];
+  let arrIcones = [
+    './img/ball.svg',
+    './img/bug.svg',
+    './img/frasco.svg',
+    './img/neve.svg',
+    './img/carro.svg',
+    './img/ancora.svg',
+  ];
 
-//! Event handlers ------------------------------------------------------------
+  let opcaoTema = [arrNumeros, arrIcones];
+  let referencia = 16;
 
-//Selecionando o tema do jogo -----
+  //! Variáveis de teste --------------------- <<<
 
-inputOpcoesTema.forEach((e) => {
-  e.addEventListener('click', () => {
-    inputOpcoesTema.forEach((e) => {
-      e.classList.remove('selecionado');
+  let tema, numeroJogadores, tamanhoGrid;
+  let arrEscolhas = [tema, numeroJogadores, tamanhoGrid];
+
+  //! Funções -------------------------------------------------------------------
+
+  //FUnção que irá remover a classe de todos os elementos dentro do array
+
+  //! Event handlers ------------------------------------------------------------
+
+  //Selecionando o tema do jogo -----
+
+  inputOpcoesTema.forEach((e) => {
+    e.addEventListener('click', (value, index) => {
+      inputOpcoesTema.forEach((e) => {
+        e.classList.remove('selecionado');
+      });
+      e.classList.add('selecionado');
+      tema = e.innerHTML;
     });
-    e.classList.add('selecionado');
   });
-});
 
-//Selecionando a quantidade de jogadores -----
+  //Selecionando a quantidade de jogadores -----
 
-inputQuantidadeJogadores.forEach((e) => {
-  e.addEventListener('click', () => {
-    inputQuantidadeJogadores.forEach((elemento) => {
-      elemento.classList.remove('selecionado');
+  inputQuantidadeJogadores.forEach((e) => {
+    e.addEventListener('click', () => {
+      inputQuantidadeJogadores.forEach((elemento) => {
+        elemento.classList.remove('selecionado');
+      });
+      e.classList.add('selecionado');
     });
-    e.classList.add('selecionado');
   });
-});
 
-//Selecionando o tamanho do grid para o jogo -----
+  //Selecionando o tamanho do grid para o jogo -----
 
-inputOpcoesTamanho.forEach((e) => {
-  e.addEventListener('click', () => {
-    inputOpcoesTamanho.forEach((elemento) => {
-      elemento.classList.remove('selecionado');
+  inputOpcoesTamanho.forEach((e) => {
+    e.addEventListener('click', () => {
+      inputOpcoesTamanho.forEach((elemento) => {
+        elemento.classList.remove('selecionado');
+      });
+      e.classList.add('selecionado');
     });
-    e.classList.add('selecionado');
   });
-});
 
-botaoComecar.addEventListener('click', () => {
-  console.log('eai vacilao');
-});
+  botaoComecar.addEventListener('click', () => {
+    console.log(arrEscolhas);
+  });
 
-//todo Alterando a HTML -----------------------------------------------
+  //todo Alterando a HTML -----------------------------------------------
+}
