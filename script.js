@@ -34,26 +34,25 @@ function scriptPagina1() {
 
   //! Variáveis de teste --------------------- <<<
 
-  let tema, numeroJogadores, tamanhoGrid;
-  let arrEscolhas = [tema, numeroJogadores, tamanhoGrid];
+  let arrEscolhas = [];
+  let quantidade =
+    //! Funções -------------------------------------------------------------------
 
-  //! Funções -------------------------------------------------------------------
+    //FUnção que irá remover a classe de todos os elementos dentro do array
 
-  //FUnção que irá remover a classe de todos os elementos dentro do array
+    //! Event handlers ------------------------------------------------------------
 
-  //! Event handlers ------------------------------------------------------------
+    //Selecionando o tema do jogo -----
 
-  //Selecionando o tema do jogo -----
-
-  inputOpcoesTema.forEach((e) => {
-    e.addEventListener('click', (value, index) => {
-      inputOpcoesTema.forEach((e) => {
-        e.classList.remove('selecionado');
+    inputOpcoesTema.forEach((e) => {
+      e.addEventListener('click', (value, index) => {
+        inputOpcoesTema.forEach((e) => {
+          e.classList.remove('selecionado');
+        });
+        e.classList.add('selecionado');
+        arrEscolhas[0] = e.innerHTML;
       });
-      e.classList.add('selecionado');
-      tema = e.innerHTML;
     });
-  });
 
   //Selecionando a quantidade de jogadores -----
 
@@ -63,6 +62,7 @@ function scriptPagina1() {
         elemento.classList.remove('selecionado');
       });
       e.classList.add('selecionado');
+      arrEscolhas[1] = e.innerHTML;
     });
   });
 
@@ -74,12 +74,17 @@ function scriptPagina1() {
         elemento.classList.remove('selecionado');
       });
       e.classList.add('selecionado');
+      if (e.innerHTML === '4x4') {
+        arrEscolhas[2] = 16;
+      } else {
+        arrEscolhas[2] = 36;
+      }
     });
   });
 
   botaoComecar.addEventListener('click', () => {
-    scriptPagina2();
-    console.log(arrEscolhas);
+    scriptPagina2(...arrEscolhas);
+    console.log(...arrEscolhas);
   });
 
   //todo Alterando a HTML -----------------------------------------------
