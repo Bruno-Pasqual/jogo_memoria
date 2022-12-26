@@ -19,7 +19,7 @@ export function scriptPagina1() {
 
   //todo Array que irá conter as escolhas feitas pelo usuário, e passará as mesmas como argumentos ao executar a função da página 2.
 
-  let arrEscolhas = [];
+  let arrEscolhas = ['Ícones', 1, 16];
 
   //! Funções -------------------------------------------------------------------
 

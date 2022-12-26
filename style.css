@@ -445,3 +445,8 @@ button {
   background: #6395b8;
   color: #fcfcfc;
 }
+
+/* ! Classe para o ganhador --------------------------------------------- */
+.ganhador {
+  background: #152938;
+}

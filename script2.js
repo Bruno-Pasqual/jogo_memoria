@@ -1,7 +1,11 @@
 import { scriptPagina1 } from './script.js';
 export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //!Selecionando os elementos no DOM ---------------------------------------
-  console.log(typeof tema, inputQuantidadeJogadores, quantosCirculos);
+  console.log(
+    typeof tema,
+    typeof inputQuantidadeJogadores,
+    typeof quantosCirculos
+  );
   const containerDefinidor = document.getElementById('container_definidor');
 
   //!Variáveis --------------------------------------------------------------
@@ -117,6 +121,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   function getOccurrence(array, value) {
     //todo Função que checa quantas vezes um um determinado valor ocorreu dentro de um array
+
     var count = 0;
     array.forEach((v) => v === value && count++);
     return count;
@@ -124,6 +129,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   function atribuiValores(elemento) {
     //todo ---- Irá gerar números aleatórios dentro do limite estabelecido pela variável "pares" e os colocar como texto dentro dos círculos
+
     const circulos = document.querySelectorAll('.container_circulos');
     let temp = Math.floor(Math.random() * pares + 1);
     if (getOccurrence(arr, temp) < 2) {
@@ -140,6 +146,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   function comparaSelecionados(arrSelecionados) {
     //todo Função que compara os valores dos dois circulos selecionados e manipula suas classes de acordo com o resultado dessa comparação
+
     if (arrSelecionados[0].innerHTML === arrSelecionados[1].innerHTML) {
       //adicionando classe de correto nas divs selecionadas
       arrSelecionados[0].classList.add('correto');
@@ -177,6 +184,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   function aumentaPonttuacao() {
     //todo Função que irá aumentar a pontuação caso o jogador acerte na escolha e irá ficar fazendo a verificação 'checarPontuação' que irá encerrar o jogo quando o a pontuação dos jogadores se igualar a quantidade de pares de números.
+
     let pontuacaoJogadores = document.querySelectorAll('.numero_pontos');
     temp = Number(pontuacaoJogadores[jogadorAtivo].innerHTML);
     temp++;
@@ -188,6 +196,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   function checarPontuacao(pontuacaoJogadores) {
     //todo Função que faz a verificação entre o número de pares e a pontuação dos jogadores, para encerrar o jogo caso ambos sejam iguais.
+
     let acumulador = 0;
     pontuacaoJogadores.forEach((elemento, index) => {
       pontuacaoJogadores;
@@ -212,8 +221,6 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
         }
       });
 
-      console.log(valoresPontuacao);
-      console.log(objetoJogadores);
       mostraResultado();
     }
   }
@@ -249,16 +256,19 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     });
   });
 
-  //! Criando lógica para troca dos jogadores -----------------------------------
+  //! ----------------------------------- Função mostra resultado
+
   function mostraResultado() {
     //todo Função que irá mostrar a tela do resultado (um modal que permanece oculto até que a pontuação tenha sido atingida)
 
-    //Seleção  dos elementos
+    //Seleção  dos elementos no DOM ------------------------------------------
     let modalFim = document.getElementById('modal_fim_de_jogo');
     let botaoRecomecar = document.querySelectorAll('.botao_recomecar');
     let botaoConfiguraJogo = document.querySelectorAll(
       '.botao_configurar_jogo'
     );
+    let containerVencedor = document.querySelectorAll('.container_vencedor');
+    let quemGanhou = document.getElementById('quem_ganhou');
 
     //mudando a propriedade do modal
     tampaTela.style.display = 'block';
@@ -292,12 +302,42 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     });
     //Fazendo um loop pelo array de objetos e utilizando os valores de cada objeto para alterar a identificação do jogador na div e sua pontuação (lembrando que esse array já foi organizado de forma que o que marcou mais pontos esteja em primeiro)
     for (let i in objetoJogadores) {
-      outputNumeroJogador[
-        i
-      ].innerHTML = `Jogador ${objetoJogadores[i].jogador}`;
-      outputPontuacaoJogador[
-        i
-      ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+      if (i === '0') {
+        outputNumeroJogador[
+          i
+        ].innerHTML = `Jogador ${objetoJogadores[i].jogador} (Ganhador)`;
+        outputPontuacaoJogador[
+          i
+        ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+        console.log(containerVencedor[i]);
+
+        //Alterando estilo do vencedor ---
+
+        containerVencedor[i].classList.add('ganhador');
+        outputNumeroJogador[i].style.color = '#fcfcfc';
+        outputPontuacaoJogador[i].style.color = '#fcfcfc';
+        quemGanhou.innerHTML = `O jogador ${i} ganhou!`;
+      } else if (
+        objetoJogadores[0].pontuacao === objetoJogadores[i].pontuacao
+      ) {
+        outputNumeroJogador[
+          i
+        ].innerHTML = `Jogador ${objetoJogadores[i].jogador} (Ganhador)`;
+        outputPontuacaoJogador[
+          i
+        ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+        containerVencedor[i].classList.add('ganhador');
+        outputNumeroJogador[i].style.color = '#fcfcfc';
+        outputPontuacaoJogador[i].style.color = '#fcfcfc';
+        quemGanhou.innerHTML = `Empatou ! `;
+      } else {
+        outputNumeroJogador[
+          i
+        ].innerHTML = `Jogador ${objetoJogadores[i].jogador}`;
+        outputPontuacaoJogador[
+          i
+        ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+      }
     }
   }
 
