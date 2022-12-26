@@ -106,3 +106,5 @@ let organizados = objetoJogadores.sort(function (a, b) {
   }
 });
  */
+
+scriptPagina1();
