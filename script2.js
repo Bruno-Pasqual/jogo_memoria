@@ -316,7 +316,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
         containerVencedor[i].classList.add('ganhador');
         outputNumeroJogador[i].style.color = '#fcfcfc';
         outputPontuacaoJogador[i].style.color = '#fcfcfc';
-        quemGanhou.innerHTML = `O jogador ${i} ganhou!`;
+        quemGanhou.innerHTML = `O jogador ${objetoJogadores[i].jogador} ganhou!`;
       } else if (
         objetoJogadores[0].pontuacao === objetoJogadores[i].pontuacao
       ) {
