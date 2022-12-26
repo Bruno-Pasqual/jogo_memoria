@@ -5,6 +5,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   //!Variáveis --------------------------------------------------------------
 
+  //Array que irá receber os valores que já foram atribuidos aos circulos, irá ser utilizado para verificar se o valor já foi usado mais de duas vezes.
   let arr = [];
 
   containerDefinidor.innerHTML = ` <div id="tampa_tela"></div>
@@ -15,23 +16,12 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   </div>
 </header>
 <main id="container_circulos_pai"></main>
-<footer>
+<footer id="footer_container">
   <div class="box_jogador ativo">
     <p class="jogador_titulo">P1</p>
     <p class="numero_pontos">0</p>
   </div>
-  <div class="box_jogador">
-    <p class="jogador_titulo">P2</p>
-    <p class="numero_pontos">0</p>
-  </div>
-  <div class="box_jogador">
-    <p class="jogador_titulo">P3</p>
-    <p class="numero_pontos">0</p>
-  </div>
-  <div class="box_jogador">
-    <p class="jogador_titulo">P4</p>
-    <p class="numero_pontos">0</p>
-  </div>
+
 </footer>
 
 <!-- !Modais ------ -->
@@ -64,19 +54,27 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     <button class="botao_configurar_jogo">Configurar Novo Jogo</button>
   </div>
 </div>`;
+
+  criandoContainersJogadores(inputQuantidadeJogadores);
   const containerCirculos = document.getElementById('container_circulos_pai');
   containerDefinidor.classList.add('pagina2');
 
   //! Variáveis para uso ------------------------------------------------------
 
-  // let quantosCirculos = arrayteste[0];
-  // quantosCirculos = 4;
   let objetoJogadores = [];
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
   let vencedor;
   let valoresPontuacao = [0, 0, 0, 0];
+  let arrIcones = [
+    './img/ball.svg',
+    './img/bug.svg',
+    './img/frasco.svg',
+    './img/neve.svg',
+    './img/carro.svg',
+    './img/ancora.svg',
+  ];
   //! Funções -----------------------------------------------------------------
 
   function alteraCirculo() {
@@ -97,7 +95,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   }
 
   function atribuiValores(elemento) {
-    //todoIrá gerar números aleatórios dentro do limite estabelecido pela variável "pares"
+    //todo ---- Irá gerar números aleatórios dentro do limite estabelecido pela variável "pares" e os colocar como texto dentro dos círculos
     const circulos = document.querySelectorAll('.container_circulos');
     let temp = Math.floor(Math.random() * pares + 1);
     if (getOccurrence(arr, temp) < 2) {
@@ -139,7 +137,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       e.classList.remove('ativo');
     });
     jogadorAtivo++;
-    jogadorAtivo === 4 ? (jogadorAtivo = 0) : '';
+    jogadorAtivo === inputQuantidadeJogadores ? (jogadorAtivo = 0) : '';
     jogadores[jogadorAtivo].classList.add('ativo');
   }
 
@@ -165,6 +163,8 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     });
     if (acumulador === pares) {
       //Criando um objeto contendo o "nome" de cada jogador e também a sua pontuação
+
+      //todo Utilizando os valores de pontuação para criar um objeto com a identificação de cada jogador e também a sua pontuação.
 
       for (let i in valoresPontuacao)
         objetoJogadores.push({
@@ -246,5 +246,18 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
         i
       ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
     }
+  }
+}
+
+function criandoContainersJogadores(quantidadeJogadores) {
+  //todo Função que irá checar a quantidade de jogadores selecionada pelo usuário, e criará os retângulos na quantidade correspondente.
+
+  const footerContainer = document.getElementById('footer_container');
+  for (let i = 1; i < quantidadeJogadores; i++) {
+    footerContainer.innerHTML += `  
+  <div class="box_jogador">
+    <p class="jogador_titulo">P2</p>
+    <p class="numero_pontos">0</p>
+  </div>`;
   }
 }

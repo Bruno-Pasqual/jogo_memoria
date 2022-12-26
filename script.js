@@ -17,40 +17,27 @@ function scriptPagina1() {
 
   //! Variáveis necessárias ----------------------------------------------------
 
-  let arrNumeros = [];
-  let arrIcones = [
-    './img/ball.svg',
-    './img/bug.svg',
-    './img/frasco.svg',
-    './img/neve.svg',
-    './img/carro.svg',
-    './img/ancora.svg',
-  ];
-
-  let opcaoTema = [arrNumeros, arrIcones];
-  let referencia = 16;
-
-  //! Variáveis de teste --------------------- <<<
+  //todo Array que irá conter as escolhas feitas pelo usuário, e passará as mesmas como argumentos ao executar a função da página 2.
 
   let arrEscolhas = [];
-  let quantidade =
-    //! Funções -------------------------------------------------------------------
 
-    //FUnção que irá remover a classe de todos os elementos dentro do array
+  //! Funções -------------------------------------------------------------------
 
-    //! Event handlers ------------------------------------------------------------
+  //FUnção que irá remover a classe de todos os elementos dentro do array
 
-    //Selecionando o tema do jogo -----
+  //! Event handlers ------------------------------------------------------------
 
-    inputOpcoesTema.forEach((e) => {
-      e.addEventListener('click', (value, index) => {
-        inputOpcoesTema.forEach((e) => {
-          e.classList.remove('selecionado');
-        });
-        e.classList.add('selecionado');
-        arrEscolhas[0] = e.innerHTML;
+  //Selecionando o tema do jogo -----
+
+  inputOpcoesTema.forEach((e) => {
+    e.addEventListener('click', (value, index) => {
+      inputOpcoesTema.forEach((e) => {
+        e.classList.remove('selecionado');
       });
+      e.classList.add('selecionado');
+      arrEscolhas[0] = e.innerHTML;
     });
+  });
 
   //Selecionando a quantidade de jogadores -----
 
@@ -60,7 +47,7 @@ function scriptPagina1() {
         elemento.classList.remove('selecionado');
       });
       e.classList.add('selecionado');
-      arrEscolhas[1] = e.innerHTML;
+      arrEscolhas[1] = Number(e.innerHTML);
     });
   });
 
