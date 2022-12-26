@@ -2,8 +2,6 @@ import { scriptPagina2 } from './script2.js';
 
 //!Checando se o html que está atualmente sendo mostrado é do pagina 1 e executando código caso seja
 
-window.location.pathname.endsWith('index.html') ? scriptPagina1() : '';
-
 function scriptPagina1() {
   //!Selecionando elementos necessários para o DOM ------------------------------
   //todo Tela inicial !
@@ -90,7 +88,7 @@ function scriptPagina1() {
   //todo Alterando a HTML -----------------------------------------------
 }
 
-let pontuacao = [0, 5, 6, 2];
+/* let pontuacao = [0, 5, 6, 2];
 let pontuacaoEntry = pontuacao.entries();
 let objetoJogadores = [];
 
@@ -107,3 +105,4 @@ let organizados = objetoJogadores.sort(function (a, b) {
     return true;
   }
 });
+ */
