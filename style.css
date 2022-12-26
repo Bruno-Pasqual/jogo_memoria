@@ -173,7 +173,8 @@ footer {
   height: 78px;
   margin: 0 auto 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 24px;
   align-items: flex-end;
 }
 
@@ -246,7 +247,7 @@ footer {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  width: 75%;
+  width: 72%;
 }
 
 .container_circulos.selecionado {
@@ -387,5 +388,60 @@ footer {
 
 .botao_configurar_jogo:hover {
   cursor: pointer;
-  background: #c6cacd;
+  background: #6395b8;
+  color: #fcfcfc;
+}
+
+/* ! Estilizando o menu modal ------------------------------- */
+
+#container_menu {
+  width: 327px;
+  height: 224px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  row-gap: 16px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 340px;
+  left: 50%;
+  display: none;
+  z-index: 2;
+}
+
+button {
+  width: 279px;
+  height: 48px;
+  border-radius: 26px;
+  background: #dfe7ec;
+  color: #304859;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+}
+
+#botao_menu {
+  max-width: 78px;
+}
+
+.botao_recomecar {
+  background: #fda214;
+}
+
+#botao_menu:hover {
+  cursor: pointer;
+  background: #ffb84a;
+  color: #fcfcfc;
+}
+.botao_recomecar:hover {
+  background: #ffb84a;
+  cursor: pointer;
+}
+
+#botao_voltar_jogo:hover {
+  cursor: pointer;
+  background: #6395b8;
+  color: #fcfcfc;
 }

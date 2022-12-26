@@ -1,3 +1,4 @@
+import { scriptPagina1 } from './script.js';
 export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //!Selecionando os elementos no DOM ---------------------------------------
   console.log(typeof tema, inputQuantidadeJogadores, quantosCirculos);
@@ -53,11 +54,24 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     <button class="botao_recomecar">Recomeçar</button>
     <button class="botao_configurar_jogo">Configurar Novo Jogo</button>
   </div>
-</div>`;
+</div>
+<div id="container_menu">
+  <button class="botao_recomecar">Recomeçar</button>
+  <button class="botao_configurar_jogo">Novo Jogo</button>
+  <button id="botao_voltar_jogo">Retornar ao jogo</button>
+</div>
+`;
 
   criandoContainersJogadores(inputQuantidadeJogadores);
   const containerCirculos = document.getElementById('container_circulos_pai');
   containerDefinidor.classList.add('pagina2');
+
+  //!Variáveis comuns para o modal ---------------------------------------------
+  let containerMenu = document.getElementById('container_menu');
+  let tampaTela = document.getElementById('tampa_tela');
+  const botaoMenu = document.getElementById('botao_menu');
+  const botaoRecomecar = document.querySelectorAll('.botao_recomecar');
+  const botaoVoltar = document.getElementById('botao_voltar_jogo');
 
   //! Variáveis para uso ------------------------------------------------------
 
@@ -68,6 +82,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   let vencedor;
   let valoresPontuacao = [0, 0, 0, 0];
   let arrIcones = [
+    '',
     './img/aviao.png',
     './img/diamante.png',
     './img/dice.png',
@@ -237,7 +252,6 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     //todo Função que irá mostrar a tela do resultado (um modal que permanece oculto até que a pontuação tenha sido atingida)
 
     //Seleção  dos elementos
-    let tampaTela = document.getElementById('tampa_tela');
     let modalFim = document.getElementById('modal_fim_de_jogo');
     let botaoRecomecar = document.querySelector('.botao_recomecar');
     let botaoConfigurarJogo = document.querySelector('.botao_configurar_jogo');
@@ -263,6 +277,43 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
     }
   }
+
+  //!Event listeners -------------------------------------------------------
+
+  //! ------------------------------------------------Event listeners do menu
+
+  botaoMenu.addEventListener('click', () => {
+    tampaTela.style.display = 'block';
+    containerMenu.style.display = 'grid';
+    const botaoConfiguraJogo = document.querySelectorAll(
+      '.botao_configurar_jogo'
+    );
+
+    botaoConfiguraJogo.forEach((e) => {
+      //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
+
+      e.addEventListener('click', () => {
+        console.log('fui clicado');
+        voltaPagina1();
+        scriptPagina1();
+      });
+    });
+
+    botaoRecomecar.forEach((e) => {
+      e.addEventListener('click', () => {
+        //todo Botão que irá executar uma rotina para que um novo jogo seja gerado, com os valores anteriormente passados.
+
+        tampaTela.style.display = 'none';
+        containerMenu.style.display = 'none';
+        scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos);
+      });
+    });
+
+    botaoVoltar.addEventListener('click', () => {
+      tampaTela.style.display = 'none';
+      containerMenu.style.display = 'none';
+    });
+  });
 }
 
 function criandoContainersJogadores(quantidadeJogadores) {
@@ -276,4 +327,44 @@ function criandoContainersJogadores(quantidadeJogadores) {
     <p class="numero_pontos">0</p>
   </div>`;
   }
+}
+
+/* 
+<div id="container_menu">
+  <button class="botao_recomecar">Recomeçar</button>
+  <button class="botao_configurar_jogo">Novo Jogo</button>
+  <button id="botao_voltar_jogo">Retornar ao jogo</button> */
+
+function voltaPagina1() {
+  //todo Função que irá reescrever o innerHTML do container "containerDefinidor" retornando a página para o estado inicial
+
+  const containerDefinidor = document.getElementById('container_definidor');
+  containerDefinidor.classList.remove('pagina2');
+  containerDefinidor.innerHTML = ` <section id="container_tela_inicial">
+  <h1>memoria</h1>
+  <div id="container_temas">
+    <h2>Selecione o tema</h2>
+    <div id="container_opcoes_temas">
+      <div class="opcao_tema">Números</div>
+      <div class="opcao_tema">Ícones</div>
+    </div>
+  </div>
+  <div id="container_numero_jogadores">
+    <h2>Número de jogadores</h2>
+    <div id="container_numeroJogadores_opcoes">
+      <div class="opcao_numero_jogadores">1</div>
+      <div class="opcao_numero_jogadores">2</div>
+      <div class="opcao_numero_jogadores">3</div>
+      <div class="opcao_numero_jogadores">4</div>
+    </div>
+  </div>
+  <div id="container_size">
+    <h2>Tamanho da grade</h2>
+    <div id="container_opcao_tamanho">
+      <div class="opcao_tamanho">4x4</div>
+      <div class="opcao_tamanho">6x6</div>
+    </div>
+  </div>
+  <button id="botao_comecar">Começar Jogo</button>
+</section>`;
 }

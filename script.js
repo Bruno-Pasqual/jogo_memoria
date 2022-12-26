@@ -2,10 +2,10 @@ import { scriptPagina2 } from './script2.js';
 
 //!Checando se o html que está atualmente sendo mostrado é do pagina 1 e executando código caso seja
 
-function scriptPagina1() {
+export function scriptPagina1() {
   //!Selecionando elementos necessários para o DOM ------------------------------
   //todo Tela inicial !
-
+  const containerDefinidor = document.getElementById('container_definidor');
   const inputOpcoesTema = document.querySelectorAll('.opcao_tema');
   const inputQuantidadeJogadores = document.querySelectorAll(
     '.opcao_numero_jogadores'
