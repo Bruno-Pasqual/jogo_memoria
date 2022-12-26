@@ -101,7 +101,7 @@ objetoJogadores.push({ jogador: 3, pontuacao: 9 });
 console.log(objetoJogadores);
 
 let organizados = objetoJogadores.sort(function (a, b) {
-  if (a.pontuacao < b.pontuacao) {
+  if (a.pontuacao > b.pontuacao) {
     return -1;
   } else {
     return true;

@@ -168,17 +168,6 @@ header {
   align-items: center;
 }
 
-main {
-  /* Esta definindo o que acontece na primeira */
-  /*   width: 327px;
-  height: 327px;
-  margin: 0 auto 94px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center; */
-}
-
 footer {
   width: 327px;
   height: 78px;
@@ -344,14 +333,13 @@ footer {
   border-radius: 5px;
 }
 
-.jogador_vencedor {
-  color: red;
+.output_numero_jogador {
   font-size: 13px;
   font-weight: 700;
   color: #7191a5;
 }
 
-.quantos_marcou {
+.output_pontos_marcados {
   color: #304859;
   font-size: 20px;
   font-weight: 700;

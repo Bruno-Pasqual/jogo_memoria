@@ -43,20 +43,20 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   </div>
   <div id="modal_main">
     <div class="container_vencedor">
-      <p class="jogador_vencedor">Jogador 3</p>
-      <p class="quantos_marcou">8 pares</p>
+      <p class="output_numero_jogador">Jogador 3</p>
+      <p class="output_pontos_marcados">8 pares</p>
     </div>
     <div class="container_vencedor">
-      <p class="jogador_vencedor">Jogador 3</p>
-      <p class="quantos_marcou">8 pares</p>
+      <p class="output_numero_jogador">Jogador 3</p>
+      <p class="output_pontos_marcados">8 pares</p>
     </div>
     <div class="container_vencedor">
-      <p class="jogador_vencedor">Jogador 3</p>
-      <p class="quantos_marcou">8 pares</p>
+      <p class="output_numero_jogador">Jogador 3</p>
+      <p class="output_pontos_marcados">8 pares</p>
     </div>
     <div class="container_vencedor">
-      <p class="jogador_vencedor">Jogador 3</p>
-      <p class="quantos_marcou">8 pares</p>
+      <p class="output_numero_jogador">Jogador 3</p>
+      <p class="output_pontos_marcados">8 pares</p>
     </div>
   </div>
   <div id="modal_footer">
@@ -70,8 +70,8 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //! Variáveis para uso ------------------------------------------------------
 
   // let quantosCirculos = arrayteste[0];
-  // let quantosCirculos = 36;
-  let pontuacaoJogadores = [];
+  // quantosCirculos = 4;
+  let objetoJogadores = [];
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
@@ -151,11 +151,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     temp = Number(pontuacaoJogadores[jogadorAtivo].innerHTML);
     temp++;
     pontuacaoJogadores[jogadorAtivo].innerHTML = temp;
-    checarPontuacao(pontuacaoJogadores);
     valoresPontuacao[jogadorAtivo] = temp;
-    console.log(valoresPontuacao);
+    checarPontuacao(pontuacaoJogadores);
+    // console.log(valoresPontuacao);
   }
-  n;
 
   function checarPontuacao(pontuacaoJogadores) {
     //todo Função que faz a verificação entre o número de pares e a pontuação dos jogadores, para encerrar o jogo caso ambos sejam iguais.
@@ -165,12 +164,24 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       acumulador += Number(elemento.innerHTML);
     });
     if (acumulador === pares) {
-      pontuacao = 0;
-      vencedor = 0;
-      pontuacaoJogadores.forEach((elemento, index) => {
-        Number(elemento.innerHTML) > pontuacao ? (vencedor = index) : '';
+      //Criando um objeto contendo o "nome" de cada jogador e também a sua pontuação
+
+      for (let i in valoresPontuacao)
+        objetoJogadores.push({
+          jogador: Number(i) + 1,
+          pontuacao: valoresPontuacao[i],
+        });
+
+      objetoJogadores = objetoJogadores.sort(function (a, b) {
+        if (a.pontuacao > b.pontuacao) {
+          return -1;
+        } else {
+          return true;
+        }
       });
-      console.log(`O vencedor foi o jogador ${[vencedor]}`);
+
+      console.log(valoresPontuacao);
+      console.log(objetoJogadores);
       mostraResultado();
     }
   }
@@ -207,13 +218,33 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   //! Criando lógica para troca dos jogadores -----------------------------------
   function mostraResultado() {
+    //todo Função que irá mostrar a tela do resultado (um modal que permanece oculto até que a pontuação tenha sido atingida)
+
     //Seleção  dos elementos
     let tampaTela = document.getElementById('tampa_tela');
     let modalFim = document.getElementById('modal_fim_de_jogo');
     let botaoRecomecar = document.querySelector('.botao_recomecar');
     let botaoConfigurarJogo = document.querySelector('.botao_configurar_jogo');
 
+    //mudando a propriedade do modal
     tampaTela.style.display = 'block';
     modalFim.style.display = 'block';
+
+    //Selecionando elementos que irão receber os valores do objeto
+    const outputNumeroJogador = document.querySelectorAll(
+      '.output_numero_jogador'
+    );
+    const outputPontuacaoJogador = document.querySelectorAll(
+      '.output_pontos_marcados'
+    );
+
+    for (let i in objetoJogadores) {
+      outputNumeroJogador[
+        i
+      ].innerHTML = `Jogador ${objetoJogadores[i].jogador}`;
+      outputPontuacaoJogador[
+        i
+      ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+    }
   }
 }
