@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Jogo da memória</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="tampa_tela"></div>
+      <header>
+        <h3>memória</h3>
+        <div id="lado_esquerdo">
+          <button id="botao_menu">Menu</button>
+        </div>
+      </header>
+      <main id="container_circulos_pai"></main>
+      <footer>
+        <div class="box_jogador ativo">
+          <p class="jogador_titulo">P1</p>
+          <p class="numero_pontos">0</p>
+        </div>
+        <div class="box_jogador">
+          <p class="jogador_titulo">P2</p>
+          <p class="numero_pontos">0</p>
+        </div>
+        <div class="box_jogador">
+          <p class="jogador_titulo">P3</p>
+          <p class="numero_pontos">0</p>
+        </div>
+        <div class="box_jogador">
+          <p class="jogador_titulo">P4</p>
+          <p class="numero_pontos">0</p>
+        </div>
+      </footer>
+
+      <!-- !Modais ------ -->
+
+      <div id="modal_fim_de_jogo">
+        <div id="modal_header">
+          <p id="quem_ganhou">Jogador 3 ganhou!</p>
+          <p id="mensagem_resultado">Fim de jogo! Confira o resultado</p>
+        </div>
+        <div id="modal_main">
+          <div class="container_vencedor">
+            <p class="jogador_vencedor">Jogador 3</p>
+            <p class="quantos_marcou">8 pares</p>
+          </div>
+          <div class="container_vencedor">
+            <p class="jogador_vencedor">Jogador 3</p>
+            <p class="quantos_marcou">8 pares</p>
+          </div>
+          <div class="container_vencedor">
+            <p class="jogador_vencedor">Jogador 3</p>
+            <p class="quantos_marcou">8 pares</p>
+          </div>
+          <div class="container_vencedor">
+            <p class="jogador_vencedor">Jogador 3</p>
+            <p class="quantos_marcou">8 pares</p>
+          </div>
+        </div>
+        <div id="modal_footer">
+          <button class="botao_recomecar">Recomeçar</button>
+          <button class="botao_configurar_jogo">Configurar Novo Jogo</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="script2.js"></script>
+  </body>
+</html>
