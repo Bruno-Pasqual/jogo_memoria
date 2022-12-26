@@ -1,6 +1,6 @@
 export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //!Selecionando os elementos no DOM ---------------------------------------
-
+  console.log(typeof tema, inputQuantidadeJogadores, quantosCirculos);
   const containerDefinidor = document.getElementById('container_definidor');
 
   //!Variáveis --------------------------------------------------------------
@@ -68,12 +68,24 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   let vencedor;
   let valoresPontuacao = [0, 0, 0, 0];
   let arrIcones = [
+    './img/aviao.png',
+    './img/diamante.png',
+    './img/dice.png',
+    './img/dog.png',
+    './img/frango.png',
+    './img/helicoptero.png',
+    './img/passaro.png',
+    './img/skull.png',
     './img/ball.svg',
     './img/bug.svg',
     './img/frasco.svg',
     './img/neve.svg',
     './img/carro.svg',
     './img/ancora.svg',
+    './img/lua.svg',
+    './img/mao.svg',
+    './img/simbolo.svg',
+    './img/sol.svg',
   ];
   //! Funções -----------------------------------------------------------------
 
@@ -100,7 +112,11 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     let temp = Math.floor(Math.random() * pares + 1);
     if (getOccurrence(arr, temp) < 2) {
       arr.unshift(temp);
-      elemento.innerHTML = temp;
+      if (tema === 'Números') {
+        elemento.innerHTML = temp;
+      } else {
+        elemento.innerHTML = `<img src="${arrIcones[temp]}" alt="">`;
+      }
     } else {
       atribuiValores(elemento);
     }
