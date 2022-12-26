@@ -89,3 +89,21 @@ function scriptPagina1() {
 
   //todo Alterando a HTML -----------------------------------------------
 }
+
+let pontuacao = [0, 5, 6, 2];
+let pontuacaoEntry = pontuacao.entries();
+let objetoJogadores = [];
+
+objetoJogadores.push({ jogador: 0, pontuacao: 5 });
+objetoJogadores.push({ jogador: 1, pontuacao: 3 });
+objetoJogadores.push({ jogador: 2, pontuacao: 4 });
+objetoJogadores.push({ jogador: 3, pontuacao: 9 });
+console.log(objetoJogadores);
+
+let organizados = objetoJogadores.sort(function (a, b) {
+  if (a.pontuacao < b.pontuacao) {
+    return -1;
+  } else {
+    return true;
+  }
+});

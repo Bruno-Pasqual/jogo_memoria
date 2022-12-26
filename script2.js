@@ -3,6 +3,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   const containerDefinidor = document.getElementById('container_definidor');
 
+  //!Variáveis --------------------------------------------------------------
+
+  let arr = [];
+
   containerDefinidor.innerHTML = ` <div id="tampa_tela"></div>
 <header>
   <h3>memória</h3>
@@ -67,10 +71,12 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   // let quantosCirculos = arrayteste[0];
   // let quantosCirculos = 36;
+  let pontuacaoJogadores = [];
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
   let vencedor;
+  let valoresPontuacao = [0, 0, 0, 0];
   //! Funções -----------------------------------------------------------------
 
   function alteraCirculo() {
@@ -137,20 +143,25 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     jogadores[jogadorAtivo].classList.add('ativo');
   }
 
+  //! Função que aumenta a pontuação -- <
+
   function aumentaPonttuacao() {
     //todo Função que irá aumentar a pontuação caso o jogador acerte na escolha e irá ficar fazendo a verificação 'checarPontuação' que irá encerrar o jogo quando o a pontuação dos jogadores se igualar a quantidade de pares de números.
     let pontuacaoJogadores = document.querySelectorAll('.numero_pontos');
     temp = Number(pontuacaoJogadores[jogadorAtivo].innerHTML);
-    console.log(typeof temp, temp);
     temp++;
     pontuacaoJogadores[jogadorAtivo].innerHTML = temp;
     checarPontuacao(pontuacaoJogadores);
+    valoresPontuacao[jogadorAtivo] = temp;
+    console.log(valoresPontuacao);
   }
+  n;
 
   function checarPontuacao(pontuacaoJogadores) {
     //todo Função que faz a verificação entre o número de pares e a pontuação dos jogadores, para encerrar o jogo caso ambos sejam iguais.
     let acumulador = 0;
-    pontuacaoJogadores.forEach((elemento) => {
+    pontuacaoJogadores.forEach((elemento, index) => {
+      pontuacaoJogadores;
       acumulador += Number(elemento.innerHTML);
     });
     if (acumulador === pares) {
