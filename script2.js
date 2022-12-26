@@ -9,6 +9,8 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //Array que irá receber os valores que já foram atribuidos aos circulos, irá ser utilizado para verificar se o valor já foi usado mais de duas vezes.
   let arr = [];
 
+  //todo Reescrevendo o innerHTML do containerDefinidor -----------------------
+
   containerDefinidor.innerHTML = ` <div id="tampa_tela"></div>
 <header>
   <h3>memória</h3>
@@ -74,7 +76,6 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   const botaoVoltar = document.getElementById('botao_voltar_jogo');
 
   //! Variáveis para uso ------------------------------------------------------
-
   let objetoJogadores = [];
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
@@ -240,9 +241,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   circulos.forEach((elemento) => {
     elemento.addEventListener('click', () => {
+      //todo Adiciona a classe "selecionado" aos círculos que o usuário clicar e quando houver 2 círculos selecionados faz a comparação de ambos para verificar se são iguais.
+
       elemento.classList.toggle('selecionado');
       let arrSelecionados = document.querySelectorAll('.selecionado');
-      console.log(arrSelecionados);
       arrSelecionados.length === 2 ? comparaSelecionados(arrSelecionados) : '';
     });
   });
@@ -253,8 +255,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
     //Seleção  dos elementos
     let modalFim = document.getElementById('modal_fim_de_jogo');
-    let botaoRecomecar = document.querySelector('.botao_recomecar');
-    let botaoConfigurarJogo = document.querySelector('.botao_configurar_jogo');
+    let botaoRecomecar = document.querySelectorAll('.botao_recomecar');
+    let botaoConfiguraJogo = document.querySelectorAll(
+      '.botao_configurar_jogo'
+    );
 
     //mudando a propriedade do modal
     tampaTela.style.display = 'block';
@@ -268,6 +272,25 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       '.output_pontos_marcados'
     );
 
+    botaoConfiguraJogo.forEach((e) => {
+      //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
+
+      e.addEventListener('click', () => {
+        voltaPagina1();
+        scriptPagina1();
+      });
+    });
+
+    botaoRecomecar.forEach((e) => {
+      e.addEventListener('click', () => {
+        //todo Botão que irá executar uma rotina para que um novo jogo seja gerado, com os valores anteriormente passados.
+
+        tampaTela.style.display = 'none';
+        containerMenu.style.display = 'none';
+        scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos);
+      });
+    });
+    //Fazendo um loop pelo array de objetos e utilizando os valores de cada objeto para alterar a identificação do jogador na div e sua pontuação (lembrando que esse array já foi organizado de forma que o que marcou mais pontos esteja em primeiro)
     for (let i in objetoJogadores) {
       outputNumeroJogador[
         i
@@ -293,7 +316,6 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
 
       e.addEventListener('click', () => {
-        console.log('fui clicado');
         voltaPagina1();
         scriptPagina1();
       });
