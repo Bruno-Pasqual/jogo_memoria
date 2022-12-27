@@ -269,12 +269,19 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   //Cria os círculos com base na quantidade escolhida pelo jogador
   for (let i = 0; i < quantosCirculos; i++) {
-    containerCirculos.innerHTML += `<div class="container_circulos">4</div>`;
+    containerCirculos.innerHTML += `<div class="container_circulos selecionado">4</div>`;
   }
+  quantosCirculos === 36 ? alteraCirculo() : '';
   const circulos = document.querySelectorAll('.container_circulos');
+  let tempo = 0;
+  quantosCirculos === 16 ? (tempo = 4000) : (tempo = 7000);
+  setTimeout(function () {
+    circulos.forEach((e) => {
+      e.classList.remove('selecionado');
+    });
+  }, tempo);
 
   //Altera a largura e altura dos círculos dependendo do tamanho do GRID
-  quantosCirculos === 36 ? alteraCirculo() : '';
 
   circulos.forEach((elemento) => {
     if (elemento.innerHTML === '4') {

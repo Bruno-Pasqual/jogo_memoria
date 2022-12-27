@@ -68,10 +68,10 @@ h1 {
   background: #304859;
 }
 
-.opcao_tema:hover {
+/* .opcao_tema:hover {
   cursor: pointer;
   background: #6395b8;
-}
+} */
 
 /* Container número de jogadores */
 
@@ -92,10 +92,10 @@ h1 {
   color: #fcfcfc;
 }
 
-.opcao_numero_jogadores:hover {
+/* .opcao_numero_jogadores:hover {
   cursor: pointer;
   background: #6395b8;
-}
+} */
 
 .opcao_numero_jogadores.selecionado {
   background: #304859;
@@ -119,10 +119,10 @@ h1 {
   color: #fcfcfc;
 }
 
-.opcao_tamanho:hover {
+/* .opcao_tamanho:hover {
   cursor: pointer;
   background: #6395b8;
-}
+} */
 
 .opcao_tamanho.selecionado {
   background: #304859;
@@ -143,9 +143,9 @@ h1 {
   margin-top: 8px;
 }
 
-#botao_comecar:hover {
+/* #botao_comecar:hover {
   background: #ffb84a;
-}
+} */
 
 /* ! CSS Página do jogo ------------------------------------------------- */
 
@@ -376,21 +376,21 @@ footer {
   margin-bottom: 16px;
 }
 
-.botao_recomecar:hover {
+/* .botao_recomecar:hover {
   background: #ffb84a;
   cursor: pointer;
-}
+} */
 
 .botao_configurar_jogo {
   background: #dfe7ec;
   color: #304859;
 }
 
-.botao_configurar_jogo:hover {
+/* .botao_configurar_jogo:hover {
   cursor: pointer;
   background: #6395b8;
   color: #fcfcfc;
-}
+} */
 
 /* ! Estilizando o menu modal ------------------------------- */
 
@@ -430,21 +430,21 @@ button {
   background: #fda214;
 }
 
-#botao_menu:hover {
+/* #botao_menu:hover {
   cursor: pointer;
   background: #ffb84a;
   color: #fcfcfc;
-}
-.botao_recomecar:hover {
+} */
+/* .botao_recomecar:hover {
   background: #ffb84a;
   cursor: pointer;
-}
+} */
 
-#botao_voltar_jogo:hover {
+/* #botao_voltar_jogo:hover {
   cursor: pointer;
   background: #6395b8;
   color: #fcfcfc;
-}
+} */
 
 /* ! Classe para o ganhador --------------------------------------------- */
 .ganhador {
@@ -517,4 +517,47 @@ button {
 #quantidade_movimentos {
   font-size: 24px;
   color: #304859;
+}
+
+/* Media querie para tirar o efeito de hover do celular, pois falaram que fica meio bugado no celular  */
+
+@media (min-width: 400px) {
+  .opcao_tema:hover {
+    cursor: pointer;
+    background: #6395b8;
+  }
+  #botao_comecar:hover {
+    background: #ffb84a;
+  }
+  .opcao_numero_jogadores:hover {
+    cursor: pointer;
+    background: #6395b8;
+  }
+  .opcao_tamanho:hover {
+    cursor: pointer;
+    background: #6395b8;
+  }
+  .botao_recomecar:hover {
+    background: #ffb84a;
+    cursor: pointer;
+  }
+  .botao_configurar_jogo:hover {
+    cursor: pointer;
+    background: #6395b8;
+    color: #fcfcfc;
+  }
+  #botao_menu:hover {
+    cursor: pointer;
+    background: #ffb84a;
+    color: #fcfcfc;
+  }
+  .botao_recomecar:hover {
+    background: #ffb84a;
+    cursor: pointer;
+  }
+  #botao_voltar_jogo:hover {
+    cursor: pointer;
+    background: #6395b8;
+    color: #fcfcfc;
+  }
 }
