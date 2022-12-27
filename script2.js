@@ -101,7 +101,6 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   //! Variáveis para uso ------------------------------------------------------
   let objetoJogadores = [];
-  quantosCirculos = 4;
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
@@ -285,7 +284,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
     console.log('inputQuantidadeJogadores');
 
+    //! If / else que irá verificar a quantidade de jogadores <<<<<<<<<<<<-----
+
     if (inputQuantidadeJogadores === 1) {
+      //todo Essa parte irá mostrar o modal para apenas um jogador.
       tampaTela.style.display = 'block';
       containerUmJogador.style.display = 'block';
       let botaoRecomecar = document.querySelectorAll('.botao_recomecar');
@@ -310,6 +312,9 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
           scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos);
         });
       });
+
+      //! Else --------- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+      //
     } else {
       //todo Função que irá mostrar a tela do resultado (um modal que permanece oculto até que a pontuação tenha sido atingida)
 
@@ -391,6 +396,8 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       }
     }
   }
+
+  //! Fim do else ------ <<<<<
 
   //!Event listeners -------------------------------------------------------
 
