@@ -104,9 +104,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   const botaoVoltar = document.getElementById('botao_voltar_jogo');
 
   //! Variáveis para uso ------------------------------------------------------
+  let possoSomar = false;
   let objetoJogadores = [];
   let contadorMovimentos = 0;
-  quantosCirculos = 4;
+  // quantosCirculos = 4;
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
@@ -184,22 +185,25 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       //Removendo classe de selecionado das divs
       arrSelecionados[0].classList.remove('selecionado');
       arrSelecionados[1].classList.remove('selecionado');
+      aumentaMovimento();
       // inputQuantidadeJogadores === 1 ? '' : aumentaPonttuacao();
       aumentaPonttuacao();
     } else {
       arrSelecionados[0].classList.add('errado');
       arrSelecionados[1].classList.add('errado');
+      aumentaMovimento();
       setTimeout(() => {
         arrSelecionados[0].classList.remove('errado');
         arrSelecionados[1].classList.remove('errado');
         arrSelecionados[0].classList.remove('selecionado');
         arrSelecionados[1].classList.remove('selecionado');
-      }, 1000);
+      }, 150);
+
       //Verificação da quantidade de jogadores, a função é executada apenas se houver mais que 1.
       inputQuantidadeJogadores === 1 ? '' : trocaJogador();
     }
 
-    quantidadeMovimentos.innerHTML = Number(quantidadeMovimentos.innerHTML) + 1;
+    // quantidadeMovimentos.innerHTML = Number(quantidadeMovimentos.innerHTML) + 1;
   }
 
   function trocaJogador() {
@@ -282,10 +286,11 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   circulos.forEach((elemento) => {
     elemento.addEventListener('click', () => {
-      //todo Adiciona a classe "selecionado" aos círculos que o usuário clicar e quando houver 2 círculos selecionados faz a comparação de ambos para verificar se são iguais.
-
-      elemento.classList.toggle('selecionado');
       let arrSelecionados = document.querySelectorAll('.selecionado');
+
+      //todo Adiciona a classe "selecionado" aos círculos que o usuário clicar e quando houver 2 círculos selecionados faz a comparação de ambos para verificar se são iguais.
+      if (arrSelecionados.length < 2) elemento.classList.toggle('selecionado');
+      arrSelecionados = document.querySelectorAll('.selecionado');
       arrSelecionados.length === 2 ? comparaSelecionados(arrSelecionados) : '';
     });
   });
@@ -552,4 +557,10 @@ function voltaPagina1() {
   </div>
   <button id="botao_comecar">Começar Jogo</button>
 </section>`;
+}
+
+function aumentaMovimento() {
+  //todo função que irá aumentar a contagem dos movimentos, é executada quando é realizada a comparação.
+  const quantidadeMovimentos = document.getElementById('quantidade_movimentos');
+  quantidadeMovimentos.innerHTML = Number(quantidadeMovimentos.innerHTML) + 1;
 }
