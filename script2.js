@@ -7,6 +7,9 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     typeof quantosCirculos
   );
   const containerDefinidor = document.getElementById('container_definidor');
+  let segundos = 0;
+  let dezenasSegundos = 0;
+  let minutos = 0;
 
   //!Variáveis --------------------------------------------------------------
 
@@ -74,7 +77,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       <div id="modal_main_um">
         <div class="linha_modal1">
           <p>Tempo</p>
-          <p class="output_modal1">1:53</p>
+          <p class="output_modal1" id="tempo_passado_output">0:00</p>
         </div>
         <div class="linha_modal1">
           <p>Movimentos</p>
@@ -103,7 +106,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //! Variáveis para uso ------------------------------------------------------
   let objetoJogadores = [];
   let contadorMovimentos = 0;
-  // quantosCirculos = 4;
+  quantosCirculos = 4;
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
@@ -292,6 +295,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   function mostraResultado() {
     let modalFim = document.getElementById('modal_fim_de_jogo');
     let containerUmJogador = document.getElementById('container_um_jogador');
+    let tempoCorridoOutput = document.getElementById('tempo_passado_output');
 
     console.log('inputQuantidadeJogadores');
 
@@ -312,7 +316,9 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
         'quantidade_movimentos_output'
       );
 
-      quantidadeMovimentosOutput.innerHTML = quantidadeMovimentos.innerHTML;
+      quantidadeMovimentosOutput.innerHTML =
+        Number(quantidadeMovimentos.innerHTML) + 1;
+      tempoCorridoOutput.innerHTML = `${minutos}:${dezenasSegundos}${segundos}`;
 
       botaoConfiguraJogo.forEach((e) => {
         //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
@@ -454,6 +460,26 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       containerMenu.style.display = 'none';
     });
   });
+
+  //! Fazendo rotina que irá fazer a passagem do tempo.-------------------------
+
+  if (inputQuantidadeJogadores === 1) {
+    let tempoPassado = document.getElementById('tempo_passado');
+    function contaTempo() {
+      segundos++;
+      if (segundos > 9) {
+        segundos = 0;
+        dezenasSegundos++;
+        if (dezenasSegundos === 6) {
+          dezenasSegundos = 0;
+          minutos++;
+        }
+      }
+      tempoPassado.innerHTML = `${minutos}:${dezenasSegundos}${segundos}`;
+    }
+
+    setInterval(contaTempo, 1000);
+  }
 }
 
 function criandoContainersJogadores(quantidadeJogadores) {

@@ -21,7 +21,7 @@ export function scriptPagina1() {
 
   let arrEscolhas = ['Ícones', 1, 16];
 
-  //! Funções -------------------------------------------------------------------
+  //! Funções ------------------------------------------------------------------
 
   //FUnção que irá remover a classe de todos os elementos dentro do array
 
