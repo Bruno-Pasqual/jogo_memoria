@@ -185,13 +185,13 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       //Removendo classe de selecionado das divs
       arrSelecionados[0].classList.remove('selecionado');
       arrSelecionados[1].classList.remove('selecionado');
-      aumentaMovimento();
+      inputQuantidadeJogadores === 1 ? aumentaMovimento() : '';
       // inputQuantidadeJogadores === 1 ? '' : aumentaPonttuacao();
       aumentaPonttuacao();
     } else {
       arrSelecionados[0].classList.add('errado');
       arrSelecionados[1].classList.add('errado');
-      aumentaMovimento();
+      inputQuantidadeJogadores === 1 ? aumentaMovimento() : '';
       setTimeout(() => {
         arrSelecionados[0].classList.remove('errado');
         arrSelecionados[1].classList.remove('errado');
