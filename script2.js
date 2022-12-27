@@ -77,8 +77,8 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
           <p class="output_modal1">1:53</p>
         </div>
         <div class="linha_modal1">
-          <p>Tentativas</p>
-          <p class="output_modal1">39 movimentos</p>
+          <p>Movimentos</p>
+          <p class="output_modal1" id="quantidade_movimentos_output">39 movimentos</p>
         </div>
       </div>
       <div id="container_botao">
@@ -96,11 +96,14 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   let containerMenu = document.getElementById('container_menu');
   let tampaTela = document.getElementById('tampa_tela');
   const botaoMenu = document.getElementById('botao_menu');
+  const footerContainer = document.getElementById('footer_container');
   const botaoRecomecar = document.querySelectorAll('.botao_recomecar');
   const botaoVoltar = document.getElementById('botao_voltar_jogo');
 
   //! Variáveis para uso ------------------------------------------------------
   let objetoJogadores = [];
+  let contadorMovimentos = 0;
+  // quantosCirculos = 4;
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
@@ -167,6 +170,10 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   function comparaSelecionados(arrSelecionados) {
     //todo Função que compara os valores dos dois circulos selecionados e manipula suas classes de acordo com o resultado dessa comparação
 
+    const quantidadeMovimentos = document.getElementById(
+      'quantidade_movimentos'
+    );
+
     if (arrSelecionados[0].innerHTML === arrSelecionados[1].innerHTML) {
       //adicionando classe de correto nas divs selecionadas
       arrSelecionados[0].classList.add('correto');
@@ -174,6 +181,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       //Removendo classe de selecionado das divs
       arrSelecionados[0].classList.remove('selecionado');
       arrSelecionados[1].classList.remove('selecionado');
+      // inputQuantidadeJogadores === 1 ? '' : aumentaPonttuacao();
       aumentaPonttuacao();
     } else {
       arrSelecionados[0].classList.add('errado');
@@ -184,8 +192,11 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
         arrSelecionados[0].classList.remove('selecionado');
         arrSelecionados[1].classList.remove('selecionado');
       }, 1000);
-      trocaJogador();
+      //Verificação da quantidade de jogadores, a função é executada apenas se houver mais que 1.
+      inputQuantidadeJogadores === 1 ? '' : trocaJogador();
     }
+
+    quantidadeMovimentos.innerHTML = Number(quantidadeMovimentos.innerHTML) + 1;
   }
 
   function trocaJogador() {
@@ -294,6 +305,15 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
       let botaoConfiguraJogo = document.querySelectorAll(
         '.botao_configurar_jogo'
       );
+      const quantidadeMovimentos = document.getElementById(
+        'quantidade_movimentos'
+      );
+      const quantidadeMovimentosOutput = document.getElementById(
+        'quantidade_movimentos_output'
+      );
+
+      quantidadeMovimentosOutput.innerHTML = quantidadeMovimentos.innerHTML;
+
       botaoConfiguraJogo.forEach((e) => {
         //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
 
@@ -438,14 +458,33 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
 function criandoContainersJogadores(quantidadeJogadores) {
   //todo Função que irá checar a quantidade de jogadores selecionada pelo usuário, e criará os retângulos na quantidade correspondente.
-
   const footerContainer = document.getElementById('footer_container');
-  for (let i = 1; i < quantidadeJogadores; i++) {
-    footerContainer.innerHTML += `  
+  if (quantidadeJogadores === 1) {
+    footerContainer.innerHTML = ` 
+  <div class="box_jogador">
+    <p class="jogador_titulo">P2</p>
+    <p class="numero_pontos">0</p>
+  </div> 
+  <div id="containerTempo">
+    <p>Tempo</p>
+    <p id="tempo_passado">0:00</p>
+  </div>
+  <div id="containerMovimentos">
+    <p>Movimentos</p>
+    <p id="quantidade_movimentos">0</p>
+  </div>`;
+    // Fiz uma pequena malandragem para fazer o código funcionar com apenas um jogador sem grandes alterações, optei por criar uma div com o container que marca os pontos dos jogadores e já o escondo logo em seguida, para que não apareça no layout de apenas 1 jogador.
+
+    const boxJogador = document.querySelector('.box_jogador');
+    boxJogador.style.display = 'none';
+  } else {
+    for (let i = 1; i < quantidadeJogadores; i++) {
+      footerContainer.innerHTML += `  
   <div class="box_jogador">
     <p class="jogador_titulo">P2</p>
     <p class="numero_pontos">0</p>
   </div>`;
+    }
   }
 }
 

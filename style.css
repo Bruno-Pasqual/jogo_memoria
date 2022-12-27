@@ -497,3 +497,24 @@ button {
   color: #304859;
   font-size: 20px;
 }
+
+/*! Editando o footer para apenas 1 jogador -------------------------------- */
+#containerTempo,
+#containerMovimentos {
+  width: 151px;
+  height: 70px;
+  color: #7191a5;
+  background: #dfe7ec;
+  border-radius: 5px;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: 15px;
+}
+
+#tempo_passado,
+#quantidade_movimentos {
+  font-size: 24px;
+  color: #304859;
+}
