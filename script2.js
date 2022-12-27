@@ -263,7 +263,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
     }
   }
 
-  //! Event handlers ----------------------------------------------------------
+  //! --------------------------------------------- Criando os círculos do grid
 
   //todo Criando lógica que irá criar os círculos de acordo com o tamanho do grid escolhido pelo jogador e já irá atribuir os números aleatórios a essas divs.
 
