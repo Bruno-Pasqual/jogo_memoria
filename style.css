@@ -450,3 +450,50 @@ button {
 .ganhador {
   background: #152938;
 }
+
+/* ! Modal para 1 jogador ----------------------------------------------- */
+
+#container_um_jogador {
+  width: 327px;
+  height: 376px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px 24px;
+  position: absolute;
+  top: 334px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 2;
+}
+
+#modal_main_um {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.linha_modal1 {
+  padding: 0 16px;
+  width: 279px;
+  height: 48px;
+  background: #dfe7ec;
+  border-radius: 5px;
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+  align-items: center;
+  color: #7191a5;
+  font-weight: bold;
+}
+
+#container_botao {
+  margin-top: 24px;
+}
+
+.output_modal1 {
+  color: #304859;
+  font-size: 20px;
+}

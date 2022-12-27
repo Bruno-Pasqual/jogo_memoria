@@ -66,6 +66,26 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   <button class="botao_configurar_jogo">Novo Jogo</button>
   <button id="botao_voltar_jogo">Retornar ao jogo</button>
 </div>
+  <div id="container_um_jogador">
+      <div id="modal_header">
+        <p id="quem_ganhou">Parábens</p>
+        <p id="mensagem_resultado">Fim de jogo! Confira o resultado</p>
+      </div>
+      <div id="modal_main_um">
+        <div class="linha_modal1">
+          <p>Tempo</p>
+          <p class="output_modal1">1:53</p>
+        </div>
+        <div class="linha_modal1">
+          <p>Tentativas</p>
+          <p class="output_modal1">39 movimentos</p>
+        </div>
+      </div>
+      <div id="container_botao">
+        <button class="botao_recomecar">Recomeçar</button>
+        <button class="botao_configurar_jogo">Novo Jogo</button>
+      </div>
+  </div>
 `;
 
   criandoContainersJogadores(inputQuantidadeJogadores);
@@ -81,6 +101,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
 
   //! Variáveis para uso ------------------------------------------------------
   let objetoJogadores = [];
+  quantosCirculos = 4;
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
@@ -259,84 +280,114 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //! ----------------------------------- Função mostra resultado
 
   function mostraResultado() {
-    //todo Função que irá mostrar a tela do resultado (um modal que permanece oculto até que a pontuação tenha sido atingida)
-
-    //Seleção  dos elementos no DOM ------------------------------------------
     let modalFim = document.getElementById('modal_fim_de_jogo');
-    let botaoRecomecar = document.querySelectorAll('.botao_recomecar');
-    let botaoConfiguraJogo = document.querySelectorAll(
-      '.botao_configurar_jogo'
-    );
-    let containerVencedor = document.querySelectorAll('.container_vencedor');
-    let quemGanhou = document.getElementById('quem_ganhou');
+    let containerUmJogador = document.getElementById('container_um_jogador');
 
-    //mudando a propriedade do modal
-    tampaTela.style.display = 'block';
-    modalFim.style.display = 'block';
+    console.log('inputQuantidadeJogadores');
 
-    //Selecionando elementos que irão receber os valores do objeto
-    const outputNumeroJogador = document.querySelectorAll(
-      '.output_numero_jogador'
-    );
-    const outputPontuacaoJogador = document.querySelectorAll(
-      '.output_pontos_marcados'
-    );
+    if (inputQuantidadeJogadores === 1) {
+      tampaTela.style.display = 'block';
+      containerUmJogador.style.display = 'block';
+      let botaoRecomecar = document.querySelectorAll('.botao_recomecar');
+      let botaoConfiguraJogo = document.querySelectorAll(
+        '.botao_configurar_jogo'
+      );
+      botaoConfiguraJogo.forEach((e) => {
+        //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
 
-    botaoConfiguraJogo.forEach((e) => {
-      //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
-
-      e.addEventListener('click', () => {
-        voltaPagina1();
-        scriptPagina1();
+        e.addEventListener('click', () => {
+          voltaPagina1();
+          scriptPagina1();
+        });
       });
-    });
 
-    botaoRecomecar.forEach((e) => {
-      e.addEventListener('click', () => {
-        //todo Botão que irá executar uma rotina para que um novo jogo seja gerado, com os valores anteriormente passados.
+      botaoRecomecar.forEach((e) => {
+        e.addEventListener('click', () => {
+          //todo Botão que irá executar uma rotina para que um novo jogo seja gerado, com os valores anteriormente passados.
 
-        tampaTela.style.display = 'none';
-        containerMenu.style.display = 'none';
-        scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos);
+          tampaTela.style.display = 'none';
+          containerMenu.style.display = 'none';
+          scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos);
+        });
       });
-    });
-    //Fazendo um loop pelo array de objetos e utilizando os valores de cada objeto para alterar a identificação do jogador na div e sua pontuação (lembrando que esse array já foi organizado de forma que o que marcou mais pontos esteja em primeiro)
-    for (let i in objetoJogadores) {
-      if (i === '0') {
-        outputNumeroJogador[
-          i
-        ].innerHTML = `Jogador ${objetoJogadores[i].jogador} (Ganhador)`;
-        outputPontuacaoJogador[
-          i
-        ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
-        console.log(containerVencedor[i]);
+    } else {
+      //todo Função que irá mostrar a tela do resultado (um modal que permanece oculto até que a pontuação tenha sido atingida)
 
-        //Alterando estilo do vencedor ---
+      //Seleção  dos elementos no DOM ------------------------------------------
+      let botaoRecomecar = document.querySelectorAll('.botao_recomecar');
+      let botaoConfiguraJogo = document.querySelectorAll(
+        '.botao_configurar_jogo'
+      );
+      let containerVencedor = document.querySelectorAll('.container_vencedor');
+      let quemGanhou = document.getElementById('quem_ganhou');
 
-        containerVencedor[i].classList.add('ganhador');
-        outputNumeroJogador[i].style.color = '#fcfcfc';
-        outputPontuacaoJogador[i].style.color = '#fcfcfc';
-        quemGanhou.innerHTML = `O jogador ${objetoJogadores[i].jogador} ganhou!`;
-      } else if (
-        objetoJogadores[0].pontuacao === objetoJogadores[i].pontuacao
-      ) {
-        outputNumeroJogador[
-          i
-        ].innerHTML = `Jogador ${objetoJogadores[i].jogador} (Ganhador)`;
-        outputPontuacaoJogador[
-          i
-        ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
-        containerVencedor[i].classList.add('ganhador');
-        outputNumeroJogador[i].style.color = '#fcfcfc';
-        outputPontuacaoJogador[i].style.color = '#fcfcfc';
-        quemGanhou.innerHTML = `Empatou ! `;
-      } else {
-        outputNumeroJogador[
-          i
-        ].innerHTML = `Jogador ${objetoJogadores[i].jogador}`;
-        outputPontuacaoJogador[
-          i
-        ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+      //Selecionando elementos que irão receber os valores do objeto
+      const outputNumeroJogador = document.querySelectorAll(
+        '.output_numero_jogador'
+      );
+      const outputPontuacaoJogador = document.querySelectorAll(
+        '.output_pontos_marcados'
+      );
+      //mudando a propriedade do modal
+      tampaTela.style.display = 'block';
+      modalFim.style.display = 'block';
+
+      botaoConfiguraJogo.forEach((e) => {
+        //todo Botão que irá voltar para tela inicial, permitindo ao jogador alterar as configurações e iniciar um novo jogo.
+
+        e.addEventListener('click', () => {
+          voltaPagina1();
+          scriptPagina1();
+        });
+      });
+
+      botaoRecomecar.forEach((e) => {
+        e.addEventListener('click', () => {
+          //todo Botão que irá executar uma rotina para que um novo jogo seja gerado, com os valores anteriormente passados.
+
+          tampaTela.style.display = 'none';
+          containerMenu.style.display = 'none';
+          scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos);
+        });
+      });
+      //Fazendo um loop pelo array de objetos e utilizando os valores de cada objeto para alterar a identificação do jogador na div e sua pontuação (lembrando que esse array já foi organizado de forma que o que marcou mais pontos esteja em primeiro)
+      for (let i in objetoJogadores) {
+        if (i === '0') {
+          outputNumeroJogador[
+            i
+          ].innerHTML = `Jogador ${objetoJogadores[i].jogador} (Ganhador)`;
+          outputPontuacaoJogador[
+            i
+          ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+          console.log(containerVencedor[i]);
+
+          //Alterando estilo do vencedor ---
+
+          containerVencedor[i].classList.add('ganhador');
+          outputNumeroJogador[i].style.color = '#fcfcfc';
+          outputPontuacaoJogador[i].style.color = '#fcfcfc';
+          quemGanhou.innerHTML = `O jogador ${objetoJogadores[i].jogador} ganhou!`;
+        } else if (
+          objetoJogadores[0].pontuacao === objetoJogadores[i].pontuacao
+        ) {
+          outputNumeroJogador[
+            i
+          ].innerHTML = `Jogador ${objetoJogadores[i].jogador} (Ganhador)`;
+          outputPontuacaoJogador[
+            i
+          ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+          containerVencedor[i].classList.add('ganhador');
+          outputNumeroJogador[i].style.color = '#fcfcfc';
+          outputPontuacaoJogador[i].style.color = '#fcfcfc';
+          quemGanhou.innerHTML = `Empatou ! `;
+        } else {
+          outputNumeroJogador[
+            i
+          ].innerHTML = `Jogador ${objetoJogadores[i].jogador}`;
+          outputPontuacaoJogador[
+            i
+          ].innerHTML = `${objetoJogadores[i].pontuacao} pares`;
+        }
       }
     }
   }
