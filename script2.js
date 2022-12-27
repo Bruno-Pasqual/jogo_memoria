@@ -106,7 +106,7 @@ export function scriptPagina2(tema, inputQuantidadeJogadores, quantosCirculos) {
   //! Variáveis para uso ------------------------------------------------------
   let objetoJogadores = [];
   let contadorMovimentos = 0;
-  quantosCirculos = 4;
+  // quantosCirculos = 4;
   let pares = quantosCirculos / 2;
   let jogadorAtivo = 0;
   let temp, pontuacao;
