@@ -9,7 +9,7 @@
 
 body {
   font-size: 18px;
-  height: 100vh;
+  height: auto;
   /* display: grid;
   place-content: center; */
   background: #152938;
@@ -17,8 +17,8 @@ body {
 
 /* ! Container tela inicial ------------------------------- */
 #container_tela_inicial {
-  width: 327px;
-  height: 386px;
+  /* width: 327px;
+  height: 386px; */
   background: #fcfcfc;
   border-radius: 10px;
   margin: 165px auto 0 auto;
@@ -519,9 +519,9 @@ button {
   color: #304859;
 }
 
-/* Media querie para tirar o efeito de hover do celular, pois falaram que fica meio bugado no celular  */
+/* ! Media para apenas executar os estados de hover em telas maiores */
 
-@media (min-width: 400px) {
+@media (min-width: 900px) {
   .opcao_tema:hover {
     cursor: pointer;
     background: #6395b8;
@@ -559,5 +559,96 @@ button {
     cursor: pointer;
     background: #6395b8;
     color: #fcfcfc;
+  }
+}
+
+@media (max-width: 750px) {
+  #container_tela_inicial {
+    width: 327px;
+    height: 386px;
+    /* background: red; */
+  }
+}
+
+@media (min-width: 750px) {
+  #container_tela_inicial {
+    /* background: blue; */
+    width: 654px;
+    height: 559px;
+    padding: 56px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  #container_numeroJogadores_opcoes {
+    column-gap: 30px;
+  }
+
+  #container_opcoes_temas {
+    column-gap: 30px;
+  }
+
+  .opcao_tema {
+    width: 256px;
+    height: 52px;
+    font-size: 26px;
+  }
+
+  #container_temas h2,
+  #container_numero_jogadores h2,
+  #container_size h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .opcao_numero_jogadores {
+    width: 119px;
+    height: 52px;
+    font-size: 26px;
+  }
+
+  #container_opcao_tamanho {
+    column-gap: 30px;
+  }
+
+  .opcao_tamanho {
+    width: 256px;
+    height: 56px;
+    font-size: 26px;
+  }
+
+  #botao_comecar {
+    width: 541px;
+    height: 70px;
+    margin-top: 20px;
+  }
+
+  /* ! Segunda tela --------------------- */
+
+  header {
+    width: 689px;
+    height: 52px;
+  }
+
+  #container_circulos_pai {
+    width: 527px;
+    height: 527px;
+  }
+
+  .container_circulos {
+    width: 118px;
+    height: 118px;
+  }
+
+  #botao_menu {
+    display: none;
+  }
+
+  #container_definidor {
+    width: 689px;
+    height: 939px;
+    margin: 0 auto;
   }
 }
